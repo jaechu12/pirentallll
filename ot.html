@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            width: 800px;
+            height: 600px;
+            display: flex;
+        }
+
+        .character-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .character {
+            width: 300px;
+            height: 372px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .clothes {
+            width: 300px;
+            height: 372px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .buttons {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="character-container">
+            <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FlqTGq%2FbtsuWZpSA2q%2FRQlwgfzqpkGjonCHFVylI0%2Fimg.png" alt="캐릭터" class="character" id="character">
+        </div>
+        <div class="buttons">
+            <button onclick="changeClothes('')">기본 옷</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FtunDK%2Fbtszdpek8fQ%2F5nsa8Ue5l7owM7HHKsa7uK%2Fimg.png')">옷 1</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbQebsj%2FbtszbLbuVpR%2FwCg9RKZWY6K9R7LoX39ENK%2Fimg.png')">옷 2</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FxmmVm%2FbtszbMIeQO2%2FNuB9LfjaQXrhoAdfmsicRk%2Fimg.png')">옷 3</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb9BYDu%2FbtszcIFkxxe%2FhkKV51skC1xfkVPGJr2wAk%2Fimg.png')">옷 4</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnJpYX%2FbtszejkLMO4%2FpypKBfXcWFpbE5FTuhAAe1%2Fimg.png')">옷 5</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb>R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc5wZe2%2FbtszgkQJPL7%2FzpIaHOcEO6jc7cVPSYgoKK%2Fimg.png')">옷 6</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbHm1io%2FbtszgyOR3Nm%2FliWhbLyZGxXZSITaSofGjk%2Fimg.png')">옷 7</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcksC5X%2Fbtszdnt1dml%2FcVIzoHD653jdaJEgJtfo7k%2Fimg.png')">옷 8</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbxMDsR%2FbtszbuAYlP5%2FioVPci0rgmWgx8aJYaME1K%2Fimg.png')">옷 9</button>
+            <button onclick="changeClothes('https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fn9Pzl%2FbtszcHNduRf%2FRN8mgXAhJVS0LGPKctQdAK%2Fimg.png')">옷 10</button>
+            <!-- 다른 옷 버튼들을 추가할 수 있습니다 -->
+        </div>
+    </div>
+    <script>
+        function changeClothes(clothesSrc) {
+            // 캐릭터 이미지와 옷 이미지를 가져옵니다.
+            var characterContainer = document.querySelector('.character-container');
+            var characterImage = characterContainer.querySelector('.character');
+            var clothesImage = characterContainer.querySelector('.clothes');
+            
+            // 기본 옷 이미지 URL을 설정합니다.
+            var defaultClothesSrc = '';
+
+            // 옷 이미지를 변경합니다.
+            if (clothesSrc === '') {
+                // 기본 옷을 표시합니다.
+                if (clothesImage) {
+                    characterContainer.removeChild(clothesImage);
+                }
+            } else {
+                // 새로운 옷 이미지로 변경합니다.
+                if (clothesImage) {
+                    clothesImage.src = clothesSrc;
+                } else {
+                    var newClothesImage = new Image();
+                    newClothesImage.src = clothesSrc;
+                    newClothesImage.classList.add('clothes');
+                    characterContainer.appendChild(newClothesImage);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
